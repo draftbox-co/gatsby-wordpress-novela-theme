@@ -52,6 +52,18 @@ module.exports = (themeOptions) => {
         },
       },
       {
+        resolve: `gatsby-plugin-manifest`,
+        options: {
+          name: siteConfig.siteTitleMeta,
+          short_name: siteConfig.shortTitle,
+          start_url: `/`,
+          background_color: siteConfig.backgroundColor,
+          theme_color: siteConfig.themeColor,
+          display: `standalone`,
+          icon: "static/favicon.png",
+        },
+      },
+      {
         resolve: `gatsby-plugin-feed`,
         options: {
           query: `
