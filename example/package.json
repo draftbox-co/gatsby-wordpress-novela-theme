@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Draftbox",
+  "license": "MIT",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build"
+  },
+  "dependencies": {
+    "disqus-react": "^1.0.9",
+    "gatsby": "^2.22.15",
+    "gatsby-source-ghost": "^4.0.5",
+    "gatsby-theme-minimal": "^1.0.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-facebook": "^8.1.4"
+  }
+}
