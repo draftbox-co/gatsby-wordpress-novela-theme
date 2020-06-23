@@ -19,7 +19,7 @@ module.exports.wordpress = {
         node {
           id
           link
-          slug
+          slug: permaLinkSlug
           body: mdx
           title: plainTitle
           excerpt: plainExcerpt
@@ -122,7 +122,7 @@ module.exports.wordpress = {
     }
   }`,
   tags: `{
-    tags: allWordpressTag {
+    tags: allWordpressTag(filter: { count: { gt: 0 } }) {
       edges {
         node {
           name

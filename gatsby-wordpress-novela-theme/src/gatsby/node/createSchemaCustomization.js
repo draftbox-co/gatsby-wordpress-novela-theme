@@ -21,6 +21,22 @@ module.exports = ({ actions }) => {
   });
 
   createFieldExtension({
+    name: "permaLinkSlug",
+    extend(options, prevFieldConfig) {
+      return {
+        resolve(source, context) {
+          if (source.link) {
+            const pathName = new URL(source.link).pathname;
+            return pathName;
+          } else {
+            return "";
+          }
+        },
+      };
+    },
+  });
+
+  createFieldExtension({
     name: "featured_media_custom",
     extend() {
       return {
@@ -109,6 +125,7 @@ module.exports = ({ actions }) => {
     tags_custom: [wordpress__TAG] @tags_custom
     featured_media_custom: wordpress__wp_media @featured_media_custom
     mdx: String @mdx
+    permaLinkSlug: String @permaLinkSlug
   }
 `);
 

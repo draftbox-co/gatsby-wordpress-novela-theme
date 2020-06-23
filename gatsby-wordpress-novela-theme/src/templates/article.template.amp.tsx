@@ -5,17 +5,10 @@ type PostTemplate = {
   data: {
     wordpressPost: any;
   };
-  pageContext: {
-    permaSlug: string;
-  };
   location: any;
 };
 
-const PostTemplate: React.FC<PostTemplate> = ({
-  data,
-  location,
-  pageContext,
-}) => {
+const PostTemplate: React.FC<PostTemplate> = ({ data, location }) => {
   return (
     <>
       <header className="main-header">
@@ -73,7 +66,7 @@ const PostTemplate: React.FC<PostTemplate> = ({
 
           <div className="comment-button-container">
             <button>
-              <a href={`${pageContext.permaSlug}`}>Leave a comment</a>
+              <a href={`${data.wordpressPost.slug}`}>Leave a comment</a>
             </button>
           </div>
         </article>
@@ -85,12 +78,12 @@ export default PostTemplate;
 
 export const postDataQuery = graphql`
   query($slug: String!) {
-    wordpressPost(slug: { eq: $slug }) {
+    wordpressPost(permaLinkSlug: { eq: $slug }) {
       title
       content
       excerpt
       plainExcerpt
-      slug
+      slug: permaLinkSlug
       categories {
         name
         slug

@@ -2,7 +2,6 @@
 
 const siteConfigDefaults = require(`./src/utils/siteConfigDefaults`);
 const path = require("path");
-const { buildPermaSlug } = require(`./src/utils/buildPermaSlug`);
 
 module.exports = (themeOptions) => {
   const siteConfig = themeOptions.siteConfig || siteConfigDefaults;
@@ -84,12 +83,8 @@ module.exports = (themeOptions) => {
                     title: edge.node.title,
                     description: edge.node.excerpt,
                     date: edge.node.date,
-                    url:
-                      site.siteMetadata.siteUrl +
-                      buildPermaSlug(edge.node.link, site.siteMetadata.apiUrl),
-                    guid:
-                      site.siteMetadata.siteUrl +
-                      buildPermaSlug(edge.node.link, site.siteMetadata.apiUrl),
+                    url: site.siteMetadata.siteUrl + edge.node.slug,
+                    guid: site.siteMetadata.siteUrl + edge.node.slug,
                     custom_elements: [{ "content:encoded": edge.node.content }],
                   };
                 });
@@ -99,7 +94,7 @@ module.exports = (themeOptions) => {
                   allWordpressPost(sort: {fields: date, order: DESC}) {
                     edges {
                       node {
-                        slug
+                        slug: permaLinkSlug
                         link
                         content
                         title
@@ -116,76 +111,58 @@ module.exports = (themeOptions) => {
           ],
         },
       },
-      // {
-      //   resolve: `gatsby-plugin-advanced-sitemap`,
-      //   options: {
-      //     query: `{
-      //       allGhostPost {
-      //         edges {
-      //           node {
-      //             id
-      //             slug
-      //             updated_at
-      //             created_at
-      //             feature_image
-      //           }
-      //         }
-      //       }
-      //       allGhostPage {
-      //         edges {
-      //           node {
-      //             id
-      //             slug
-      //             updated_at
-      //             created_at
-      //             feature_image
-      //           }
-      //         }
-      //       }
-      //       allGhostTag {
-      //         edges {
-      //           node {
-      //             id
-      //             slug
-      //             feature_image
-      //           }
-      //         }
-      //       }
-      //       allGhostAuthor {
-      //         edges {
-      //           node {
-      //             id
-      //             slug
-      //             profile_image
-      //           }
-      //         }
-      //       }
-      //     }
-      //     `,
-      //     mapping: {
-      //       allGhostPost: {
-      //         sitemap: `posts`,
-      //       },
-      //       allGhostTag: {
-      //         sitemap: `tags`,
-      //       },
-      //       allGhostAuthor: {
-      //         sitemap: `authors`,
-      //       },
-      //       allGhostPage: {
-      //         sitemap: `pages`,
-      //       },
-      //     },
-      //     exclude: [
-      //       `/dev-404-page`,
-      //       `/404`,
-      //       `/404.html`,
-      //       `/offline-plugin-app-shell-fallback`,
-      //     ],
-      //     createLinkInHead: true,
-      //     addUncaughtPages: true,
-      //   },
-      // },
+      {
+        resolve: `gatsby-plugin-advanced-sitemap`,
+        options: {
+          query: `
+                    {
+                      allWordpressPost {
+                        edges {
+                          node {
+                            id
+                            slug: permaLinkSlug
+                            date
+                          }
+                        }
+                      }
+                      allWordpressTag(filter: { count: { gt: 0 } }) {
+                        edges {
+                          node {
+                            name
+                            slug
+                          }
+                        }
+                      }
+                      allWordpressWpUsers {
+                        edges {
+                          node {
+                            name
+                            slug
+                          }
+                        }
+                      }
+                    }`,
+          mapping: {
+            allWordpressPost: {
+              sitemap: `posts`,
+            },
+            allWordpressTag: {
+              sitemap: `tags`,
+            },
+            allWordpressWpUsers: {
+              sitemap: `authors`,
+            },
+          },
+          exclude: [
+            `/dev-404-page`,
+            `/404`,
+            `/404.html`,
+            `/offline-plugin-app-shell-fallback`,
+          ],
+          createLinkInHead: true,
+          addUncaughtPages: true,
+        },
+      },
       `gatsby-plugin-theme-ui`,
       {
         resolve: `gatsby-plugin-remove-generator`,

@@ -22,7 +22,6 @@ const templates = {
 
 const query = require("../data/data.query");
 const normalize = require("../data/data.normalize");
-const { buildPermaSlug } = require("../../utils/buildPermaSlug");
 
 // ///////////////// Utility functions ///////////////////
 
@@ -125,11 +124,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   }
 
   // Combining together all the articles from different sources
-  articles = [...dataSources.wordPress.articles].map((article) => ({
-    ...article,
-    slug: buildPermaSlug(article.link, apiUrl),
-    slugWithoutPerma: article.slug,
-  }));
+  articles = [...dataSources.wordPress.articles];
 
   authors = [...dataSources.wordPress.authors];
 
@@ -197,8 +192,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       path: `${article.slug}amp`,
       component: templates.ampPage,
       context: {
-        slug: article.slugWithoutPerma,
-        permaSlug: article.slug,
+        slug: article.slug,
         amp: true,
       },
     });
