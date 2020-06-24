@@ -55,7 +55,7 @@ function normalizeAvatar(author) {
   return avatar;
 }
 
-module.exports.ghost = {
+module.exports.wordPress = {
   articles: ({ node: article }) => {
     return {
       ...article,

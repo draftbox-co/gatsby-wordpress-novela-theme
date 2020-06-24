@@ -94,7 +94,6 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   log("Config basePath", basePath);
   if (authorsPage) log("Config authorsPath", authorsPath);
 
-  // ghost posts
   try {
     const wordPressArticles = await graphql(query.wordpress.articles);
     const wordpressAuthors = await graphql(query.wordpress.authors);
@@ -103,11 +102,11 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     const siteMetaDataInfo = await graphql(query.wordpress.siteMetadata);
 
     dataSources.wordPress.articles = wordPressArticles.data.articles.edges.map(
-      normalize.ghost.articles
+      normalize.wordPress.articles
     );
 
     dataSources.wordPress.pages = wordPressPages.data.pages.edges.map(
-      normalize.ghost.articles
+      normalize.wordPress.articles
     );
 
     dataSources.wordPress.authors = wordpressAuthors.data.authors.edges.map(
