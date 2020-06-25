@@ -172,7 +172,7 @@ const ArticleShare: React.FC<{}> = () => {
       <ReferralLink disabled={!canTweet} share={share.twitter}>
         <Icons.Twitter width="18px" height="15px" />
       </ReferralLink>
-      <ReferralLink disabled={!canTweet} share={share.mail}>
+      <ReferralLink share={share.mail}>
         <Icons.Mailto width="18px" height="15px" />
       </ReferralLink>
       <ReferralLink disabled={false} share={share.linkedin}>

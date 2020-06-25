@@ -1,5 +1,5 @@
 import React from "react";
-import { FacebookProvider, Comments } from "../../gatsby-wordpress-novela-theme/src/react-facebook";
+import { FacebookProvider, Comments } from "react-facebook";
 
 const FbComments = (props) => {
   return process.env.GATSBY_FB_APP_ID ? (

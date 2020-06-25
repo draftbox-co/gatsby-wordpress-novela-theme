@@ -13,7 +13,8 @@ module.exports = ({ actions }) => {
             const mdx = htmlToMdx(source.content);
             return mdx;
           } else {
-            return "";
+            const mdx = htmlToMdx(`<div></div>`);
+            return mdx;
           }
         },
       };

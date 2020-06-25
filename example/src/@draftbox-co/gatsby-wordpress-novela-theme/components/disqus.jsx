@@ -1,5 +1,5 @@
 import React from "react";
-import { DiscussionEmbed } from "../../gatsby-wordpress-novela-theme/src/disqus-react";
+import { DiscussionEmbed } from "disqus-react";
 
 const Disqus = (props) => {
   const disqusConfig = {

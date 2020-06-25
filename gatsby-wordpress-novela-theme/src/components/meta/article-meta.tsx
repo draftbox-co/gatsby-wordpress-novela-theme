@@ -51,8 +51,6 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp }) => {
   const baseUrl = queryData.site.siteMetadata.siteUrl;
   const canonicalUrl = url.resolve(baseUrl, globalHistory.location.pathname);
 
-  console.log(data.hero, "hero is here");
-
   const feature_image = data.hero?.seo?.src;
 
   return (
