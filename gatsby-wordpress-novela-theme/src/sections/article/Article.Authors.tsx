@@ -37,7 +37,7 @@ const ArticleAuthors: React.FC<AuthorsProps> = ({ author }) => {
 
     return (
     // <pre>{JSON.stringify(author, null, 2)}</pre>
-      <AuthorLink as={Link} to={`/${author.slug}`}>
+      <AuthorLink as={Link} to={`/author/${author.slug}`}>
         <AuthorAvatar>
           <RoundedImage
             alt="Author avatar"

@@ -239,7 +239,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
     createPaginatedPages({
       edges: articlesTheAuthorHasWritten,
-      pathPrefix: author.slug,
+      pathPrefix: "author/" + author.slug,
       createPage,
       pageLength,
       pageTemplate: templates.author,
@@ -268,7 +268,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
     createPaginatedPages({
       edges: articlesWithTag,
-      pathPrefix: tag.slug,
+      pathPrefix: "tag/" + tag.slug,
       createPage,
       pageLength,
       pageTemplate: templates.tag,
