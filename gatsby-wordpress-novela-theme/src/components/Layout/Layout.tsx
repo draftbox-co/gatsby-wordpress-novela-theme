@@ -35,7 +35,7 @@ const Layout: React.FC<{}> = ({ children }) => {
   }, [colorMode]);
 
   return (
-    <ArmadaFormsProvider client={"5ecd130443daff001ff5ac21"}>
+    <ArmadaFormsProvider client={process.env.GATSBY_FORM_URL}>
       <ArticlesContextProvider>
         <Helmet
           htmlAttributes={{
