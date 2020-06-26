@@ -167,7 +167,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     if (articles.length === 1) next = [];
 
     createPage({
-      path: article.slug,
+      path: decodeURIComponent(article.slug),
       component: templates.article,
       context: {
         article,
@@ -188,7 +188,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
 
   articles.forEach((article) => {
     createPage({
-      path: `${article.slug}amp`,
+      path: `${decodeURIComponent(article.slug)}amp`,
       component: templates.ampPage,
       context: {
         slug: article.slug,
@@ -205,7 +205,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     //    * To accomplish this there is some special logic surrounding what to show next.
     //    */
     createPage({
-      path: article.slug,
+      path: decodeURIComponent(article.slug),
       component: templates.page,
       context: {
         article,
