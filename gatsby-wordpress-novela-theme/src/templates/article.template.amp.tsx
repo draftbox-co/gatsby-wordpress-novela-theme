@@ -58,7 +58,7 @@ const PostTemplate: React.FC<PostTemplate> = ({ data, location }) => {
           {data.wordpressPost.tags && data.wordpressPost.tags.length > 0 && (
             <div className="tags">
               <span>Tag:</span>
-              <a className="tag" href={`/${data.wordpressPost.tags[0].slug}`}>
+              <a className="tag" href={`/tag/${data.wordpressPost.tags[0].slug}`}>
                 {data.wordpressPost.tags[0].name}
               </a>
             </div>
