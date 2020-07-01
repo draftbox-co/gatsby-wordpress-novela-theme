@@ -1,7 +1,7 @@
 {
   "name": "@draftbox-co/gatsby-wordpress-novela-theme",
   "description": "A Gatsby theme plugin for creating blogs from headless WordPress CMS.",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "index.js",
   "author": "Draftbox",
   "homepage": "https://github.com/draftbox-co/gatsby-wordpress-novela-theme",
@@ -37,6 +37,7 @@
   "dependencies": {
     "@armada-inc/gatsby-plugin-amp": "^0.2.3",
     "@blocks/kit": "^0.0.28",
+    "@draftbox-co/html-to-compiled-mdx": "^1.0.2",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
     "@mdx-js/mdx": "^1.6.5",
@@ -79,7 +80,8 @@
     "gatsby-transformer-remark": "^2.6.9",
     "gatsby-transformer-sharp": "^2.2.4",
     "gatsby-transformer-yaml": "^2.2.4",
-    "html-to-compiled-mdx": "^1.0.1",
+    "hast-util-to-html": "^7.1.1",
+    "hast-util-to-mdast": "^7.1.1",
     "html-to-text": "^5.1.1",
     "lodash": "^4.17.15",
     "node-fetch": "^2.6.0",
@@ -94,6 +96,7 @@
     "request": "^2.88.0",
     "slugify": "^1.3.6",
     "theme-ui": "^0.2.40",
-    "typeface-merriweather": "^0.0.72"
+    "typeface-merriweather": "^0.0.72",
+    "unist-util-visit": "^2.0.2"
   }
 }

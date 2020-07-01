@@ -7,7 +7,7 @@ module.exports = async ({
   reporter,
 }) => {
   const { createNode } = actions;
-  console.log("createResolvers called");
+
 
   createResolvers({
     Query: {
