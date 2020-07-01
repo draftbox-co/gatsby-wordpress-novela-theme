@@ -8,14 +8,14 @@ import mediaqueries from "@styles/media";
  * <Heading.h1>Lorem Ipsum</Heading.h1>
  */
 
-const commonStyles = p => css`
+const commonStyles = (p) => css`
   font-weight: bold;
   color: ${p.theme.colors.primary};
   font-family: ${p.theme.fonts.serif};
 `;
 
 const h1 = styled.h1`
-  word-break: keep-all;
+  word-break: break-all;
   font-size: 52px;
   line-height: 1.15;
   ${commonStyles};
@@ -78,7 +78,7 @@ const h4 = styled.h4`
 `;
 
 const h5 = styled.h5`
-  word-break: keep-all;  
+  word-break: keep-all;
   font-size: 18px;
   line-height: 1.45;
   ${commonStyles};
