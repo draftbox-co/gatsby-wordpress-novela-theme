@@ -242,10 +242,6 @@ const ArticleBody = styled.article`
       padding-top: 60px;
     }
   `}
-
-  &.no-hero {
-    padding-top: 0;
-  }
 `;
 
 const TagsContainer = styled.div`
