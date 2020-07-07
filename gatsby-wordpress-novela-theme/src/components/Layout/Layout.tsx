@@ -19,11 +19,13 @@ import Helmet from "react-helmet";
  */
 const Layout: React.FC<{}> = ({ children }) => {
   const {
-    wpSiteMetaData: { language: lang },
+    site: { siteMetadata: language },
   } = useStaticQuery(graphql`
     {
-      wpSiteMetaData {
-        language
+      site {
+        siteMetadata {
+          language
+        }
       }
     }
   `);
@@ -39,7 +41,7 @@ const Layout: React.FC<{}> = ({ children }) => {
       <ArticlesContextProvider>
         <Helmet
           htmlAttributes={{
-            lang: lang ? lang : "auto",
+            lang: language ? language : "auto",
           }}
         />
         <Container>

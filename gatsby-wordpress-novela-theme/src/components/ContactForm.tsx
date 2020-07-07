@@ -10,21 +10,17 @@ import { useStaticQuery, graphql } from "gatsby";
 const ContactForm = () => {
   const {
     site: {
-      siteMetadata: { contactWidget },
-    },
-    wpSiteMetaData: { siteName: title },
+      siteMetadata: { contactWidget, siteTitle },
+    }
   } = useStaticQuery(graphql`
     query {
-      wpSiteMetaData {
-        siteName
-      }
-
       site {
         siteMetadata {
           contactWidget {
             title
             successMessage
           }
+          siteTitle
         }
       }
     }
@@ -71,7 +67,7 @@ const ContactForm = () => {
                 dangerouslySetInnerHTML={{
                   __html: contactWidget.title
                     ? contactWidget.title
-                    : `Contact ` + title,
+                    : `Contact ` + siteTitle,
                 }}
               ></span>
             </Heading>

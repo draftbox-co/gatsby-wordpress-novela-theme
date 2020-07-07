@@ -11,9 +11,11 @@ import { GridLayoutContext } from "./Articles.List.Context";
 
 const siteSettingsQuery = graphql`
   {
-    wpSiteMetaData {
-      title: siteName
-      description: siteDescription
+    site {
+      siteMetadata {
+        title: siteTitle
+        description: siteDescription
+      } 
     }
   }
 `;
@@ -25,8 +27,8 @@ const ArticlesHero = () => {
 
   const siteSettings = useStaticQuery(siteSettingsQuery);
 
-  const title = siteSettings.wpSiteMetaData.title;
-  const description = siteSettings.wpSiteMetaData.description;
+  const title = siteSettings.site.siteMetadata.title;
+  const description = siteSettings.site.siteMetadata.description;
   // const hero = results.site.edges[0].node.siteMetadata.hero;
   const tilesIsActive = hasSetGridLayout && gridLayout === "tiles";
   // const featuredAuthor = authors.find((author) => author.featured);

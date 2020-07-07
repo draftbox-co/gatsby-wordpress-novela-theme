@@ -140,13 +140,4 @@ module.exports = ({ actions }) => {
     mdx: String @mdx
   }
 `);
-
-  const typeDefs = `
-type WPSiteMetaData implements Node {
-  siteDescription: String
-  siteName: String,
-  language: String
-}
-`;
-  createTypes(typeDefs);
 };

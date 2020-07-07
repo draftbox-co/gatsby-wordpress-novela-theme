@@ -74,6 +74,9 @@ export interface IArticle {
   };
   readingTime: string;
   date: string;
+  modified: string;
+  seoDate: string;
+  seoModifiedDate: string;
 }
 
 interface IArticleQuery {
