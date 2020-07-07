@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: "https://epic-babbage-4f0ca9.netlify.app", // Site domain. Do not include a trailing slash!
+  siteUrl: "https://wp-novela-preview.draftbox.co", // Site domain. Do not include a trailing slash!
 
   postsPerPage: 10, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
@@ -24,11 +24,11 @@ module.exports = {
     navigation: [
       {
         label: "Home",
-        url: "https://epic-babbage-4f0ca9.netlify.app/",
+        url: "https://wp-novela-preview.draftbox.co/",
       },
       {
         label: "Contact",
-        url: "https://epic-babbage-4f0ca9.netlify.app/contact",
+        url: "https://wp-novela-preview.draftbox.co/contact",
       },
     ],
   },
@@ -37,19 +37,19 @@ module.exports = {
     navigation: [
       {
         label: "Home",
-        url: "https://epic-babbage-4f0ca9.netlify.app/",
+        url: "https://wp-novela-preview.draftbox.co/",
       },
       {
         label: "Sitemap",
-        url: "https://epic-babbage-4f0ca9.netlify.app/sitemap.xml",
+        url: "https://wp-novela-preview.draftbox.co/sitemap.xml",
       },
       {
         label: "RSS",
-        url: "https://epic-babbage-4f0ca9.netlify.app/rss.xml",
+        url: "https://wp-novela-preview.draftbox.co/rss.xml",
       },
       {
         label: "Contact",
-        url: "https://epic-babbage-4f0ca9.netlify.app/contact",
+        url: "https://wp-novela-preview.draftbox.co/contact",
       },
       {
         label: "External Link",
