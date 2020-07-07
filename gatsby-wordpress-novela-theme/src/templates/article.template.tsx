@@ -42,9 +42,11 @@ const CopyIcon = Icons.Copy;
 
 const siteQuery = graphql`
   {
-    wpSiteMetaData {
-      title: siteName
-    }
+    site {
+      siteMetadata {
+        title: siteTitle
+      }
+    } 
   }
 `;
 
@@ -63,7 +65,7 @@ const Article: Template = ({ pageContext, location }) => {
   const [contentHeight, setContentHeight] = useState<number>(0);
 
   const results = useStaticQuery(siteQuery);
-  const name = results.wpSiteMetaData.title;
+  const name = results.site.siteMetadata.title;
 
   const { article, authors, mailchimp, next } = pageContext;
 
@@ -111,7 +113,7 @@ const Article: Template = ({ pageContext, location }) => {
 
   return (
     <Layout>
-      <ArticleMeta data={article} amp={false} />
+      <ArticleMeta data={article} amp={false} location={location} />
       <ArticleHero article={article} author={article.author} />
       <ArticleAside contentHeight={contentHeight}>
         <Progress contentHeight={contentHeight} />

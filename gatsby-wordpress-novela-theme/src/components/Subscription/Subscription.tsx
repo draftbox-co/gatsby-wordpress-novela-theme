@@ -11,15 +11,11 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const Subscription: React.FC<{}> = () => {
   const {
-    wpSiteMetaData: { siteName: title },
     site: {
-      siteMetadata: { subscribeWidget },
+      siteMetadata: { subscribeWidget, siteTitle },
     },
   } = useStaticQuery(graphql`
     query {
-      wpSiteMetaData {
-        siteName
-      }
       site {
         siteMetadata {
           subscribeWidget {
@@ -27,6 +23,7 @@ const Subscription: React.FC<{}> = () => {
             helpText
             successMessage
           }
+          siteTitle
         }
       }
     }
@@ -57,7 +54,7 @@ const Subscription: React.FC<{}> = () => {
               __html: `${
                 subscribeWidget.title
                   ? subscribeWidget.title
-                  : "Subscribe to " + title
+                  : "Subscribe to " + siteTitle
               }`,
             }}
           />
@@ -99,7 +96,7 @@ const Subscription: React.FC<{}> = () => {
               {!subscribeWidget.successMessage && (
                 <SuccessText
                   dangerouslySetInnerHTML={{
-                    __html: `You've successfully subscribed to ${title}.`,
+                    __html: `You've successfully subscribed to ${siteTitle}.`,
                   }}
                 />
               )}

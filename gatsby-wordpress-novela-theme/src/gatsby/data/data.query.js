@@ -64,6 +64,9 @@ module.exports.wordpress = {
               }
             }
           } 
+          modified(formatString: "MMMM Do, YYYY")
+          seoDate: date(formatString: "MMMM DD YYYY")
+          seoModifiedDate: modified(formatString: "MMMM DD YYYY")
         }
       }
     }

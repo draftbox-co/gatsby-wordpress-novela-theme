@@ -5,21 +5,42 @@ import mediaqueries from "@styles/media";
 
 import { Icon } from "@types";
 import { graphql, useStaticQuery } from "gatsby";
+import url from "url";
+import { useColorMode } from "theme-ui";
 
 const Logo: Icon = ({ fill = "white" }) => {
+
+  const [colorMode] = useColorMode();
   const {
-    wpSiteMetaData: { siteName },
+    site: { siteMetadata: {logoUrl, alternateLogoUrl, siteTitle, siteUrl} },
   } = useStaticQuery(graphql`
     {
-      wpSiteMetaData {
-        siteName
+      site {
+        siteMetadata {
+          siteUrl
+          siteTitle
+          logoUrl
+          alternateLogoUrl
+        }
       }
     }
   `);
 
   return (
     <LogoContainer>
-      <LogoAlt>{siteName}</LogoAlt>
+      {logoUrl || alternateLogoUrl ? (
+        <img
+          className="logo"
+          src={
+            colorMode === "dark"
+              ? url.resolve(siteUrl, alternateLogoUrl)
+              : url.resolve(siteUrl, logoUrl)
+          }
+          alt=""
+        />
+      ) : (
+        <LogoAlt>{siteTitle}</LogoAlt>
+      )}
     </LogoContainer>
   );
 };
