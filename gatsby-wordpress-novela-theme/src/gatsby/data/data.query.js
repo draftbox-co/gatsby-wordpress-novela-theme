@@ -76,12 +76,22 @@ module.exports.wordpress = {
       edges {
         node {
           id
+          link
           slug
           body: mdx
           title: plainTitle
           excerpt: plainExcerpt
           readingTime
           date(formatString: "MMMM Do, YYYY")
+          author {
+            name
+            slug
+            avatar_urls {
+              wordpress_96
+            }
+            bio:description
+          }
+          
           hero: featured_media_custom {
             localFile {
               full: childImageSharp {
@@ -106,6 +116,9 @@ module.exports.wordpress = {
               }
             }
           } 
+          modified(formatString: "MMMM Do, YYYY")
+          seoDate: date(formatString: "MMMM DD YYYY")
+          seoModifiedDate: modified(formatString: "MMMM DD YYYY") 
         }
       }
     }

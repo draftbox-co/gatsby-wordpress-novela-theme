@@ -112,7 +112,7 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp, location }) => {
     : null;
 
   const author = data.author;
-  const publicTags = data.tags.map(tag => tag.name);
+  const publicTags = data.tags ? data.tags.map((tag) => tag.name): [];
   const primaryTag = publicTags[0] || ``;
   const shareImage = feature_image
     ? url.resolve(config.siteUrl, feature_image)
@@ -174,18 +174,19 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp, location }) => {
 
   return (
     <>
-      <Helmet>
-      <title>{capitalize(data.title)}</title>
+      <Helmet
+        htmlAttributes={{
+          lang: config.language ? config.language : "auto",
+        }}
+      >
+        <title>{capitalize(data.title)}</title>
         {!amp && <link rel="ampHtml" href={`${canonicalUrl}/amp`} />}
         <meta name="description" content={data.excerpt} />
         {!amp && <link rel="canonical" href={canonicalUrl} />}
 
         <meta property="og:site_name" content={config.siteTitle} />
         <meta property="og:type" content="article" />
-        <meta
-          property="og:title"
-          content={data.title || config.siteTitle}
-        />
+        <meta property="og:title" content={data.title || config.siteTitle} />
         <meta
           property="og:description"
           content={data.excerpt || config.siteDescription}
@@ -205,10 +206,7 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp, location }) => {
 
         {author && <meta property="article:author" content={author.name} />}
 
-        <meta
-          name="twitter:title"
-          content={data.title || config.siteTitle}
-        />
+        <meta name="twitter:title" content={data.title || config.siteTitle} />
         <meta
           name="twitter:description"
           content={data.excerpt || config.siteDescription}
