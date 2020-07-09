@@ -83,10 +83,10 @@ const WebsiteMeta = () => {
 
   const description = config.metadata.description || config.siteDescription;
 
-  const publisherLogo = (config.logoUrl || config.alternateLogoUrl) ? url.resolve(
-    config.siteUrl,
+  const publisherLogo =
     config.logoUrl || config.alternateLogoUrl
-  ) : null;
+      ? url.resolve(config.siteUrl, config.logoUrl || config.alternateLogoUrl)
+      : null;
   let shareImage =
     config.coverUrl ||
     config.facebookCard.imageUrl ||
@@ -117,12 +117,14 @@ const WebsiteMeta = () => {
     publisher: {
       "@type": `Organization`,
       name: siteTitle,
-      logo: {
-        "@type": `ImageObject`,
-        url: publisherLogo,
-        width: 60,
-        height: 60,
-      },
+      logo: publisherLogo
+        ? {
+            "@type": `ImageObject`,
+            url: publisherLogo,
+            width: 60,
+            height: 60,
+          }
+        : undefined,
     },
     mainEntityOfPage: {
       "@type": `WebPage`,

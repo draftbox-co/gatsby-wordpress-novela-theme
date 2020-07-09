@@ -112,7 +112,7 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp, location }) => {
     : null;
 
   const author = data.author;
-  const publicTags = data.tags ? data.tags.map((tag) => tag.name): [];
+  const publicTags = data.tags ? data.tags.map((tag) => tag.name) : [];
   const primaryTag = publicTags[0] || ``;
   const shareImage = feature_image
     ? url.resolve(config.siteUrl, feature_image)
@@ -158,12 +158,14 @@ const ArticleMeta: React.FC<ArticleMetaProps> = ({ data, amp, location }) => {
     publisher: {
       "@type": `Organization`,
       name: config.siteTitle,
-      logo: {
-        "@type": `ImageObject`,
-        url: publisherLogo,
-        width: 60,
-        height: 60,
-      },
+      logo: publisherLogo
+        ? {
+            "@type": `ImageObject`,
+            url: publisherLogo,
+            width: 60,
+            height: 60,
+          }
+        : undefined,
     },
     description: data.excerpt || config.siteDescription,
     mainEntityOfPage: {
