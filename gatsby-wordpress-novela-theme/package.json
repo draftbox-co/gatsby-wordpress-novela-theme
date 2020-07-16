@@ -35,8 +35,8 @@
     "react-dom": "^16.8.6"
   },
   "dependencies": {
-    "@armada-inc/gatsby-plugin-amp": "^0.2.3",
     "@blocks/kit": "^0.0.28",
+    "@draftbox-co/gatsby-plugin-amp": "^0.2.4",
     "@draftbox-co/html-to-compiled-mdx": "^1.0.2",
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",

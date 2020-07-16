@@ -38,7 +38,7 @@ module.exports = (themeOptions) => {
         options: wordpressConfig,
       },
       {
-        resolve: `@armada-inc/gatsby-plugin-amp`,
+        resolve: `@draftbox-co/gatsby-plugin-amp`,
         options: {
           canonicalBaseUrl: siteConfig.siteUrl,
           components: [`amp-form`],
