@@ -23,7 +23,7 @@ const ArticleHero: React.FC<ArticleHeroProps> = ({ article, author }) => {
   return (
     <Hero>
       <Header className={hasHeroImage ? "" : "no-hero"}>
-        <HeroHeading>{article.title}</HeroHeading>
+        <HeroHeading dangerouslySetInnerHTML={{__html: article.title}}></HeroHeading>
         <HeroSubtitle hasCoAUthors={false}>
           <ArticleAuthors author={author} />
           <ArticleMeta hasCoAUthors={false}>

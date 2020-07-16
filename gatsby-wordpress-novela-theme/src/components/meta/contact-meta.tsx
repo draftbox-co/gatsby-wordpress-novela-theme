@@ -2,7 +2,6 @@ import React from "react";
 import Helmet from "react-helmet";
 import { graphql, useStaticQuery } from "gatsby";
 import url from "url";
-import { globalHistory } from "@reach/router";
 
 type SeoData = {
   site: {
@@ -37,7 +36,7 @@ type SeoData = {
   };
 };
 
-const WebsiteMeta = () => {
+const ContactMeta = ({ location }) => {
   const data = useStaticQuery<SeoData>(graphql`
     query {
       site {
@@ -79,7 +78,7 @@ const WebsiteMeta = () => {
   const siteTitle = data.site.siteMetadata.siteTitle;
   const siteDescription = data.site.siteMetadata.siteDescription;
 
-  const canonical = url.resolve(baseUrl, globalHistory.location.pathname);
+  const canonical = url.resolve(baseUrl, location.pathname);
 
   const description = config.metadata.description || config.siteDescription;
 
@@ -104,8 +103,9 @@ const WebsiteMeta = () => {
 
   const jsonLd = {
     "@context": `https://schema.org/`,
-    "@type": "Website",
+    "@type": "WebPage",
     url: canonical,
+    headline: 'Contact | ' + config.metadata.title || config.siteTitle,
     image: shareImage
       ? {
           "@type": `ImageObject`,
@@ -136,17 +136,17 @@ const WebsiteMeta = () => {
   return (
     <>
       <Helmet htmlAttributes={{ lang: config.language }}>
-        <title>{config.metadata.title || config.siteTitle}</title>
+        <title>Contact | {config.metadata.title || config.siteTitle}</title>
         <meta
           name="description"
           content={config.metadata.description || config.siteDescription}
         />
         <link rel="canonical" href={canonical} />
         <meta property="og:site_name" content={config.siteTitle} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta
           property="og:title"
-          content={
+          content={ 'Contact | ' +
             config.facebookCard.title ||
             config.metadata.title ||
             config.siteTitle
@@ -169,7 +169,7 @@ const WebsiteMeta = () => {
         )}
         <meta
           name="twitter:title"
-          content={
+          content={ 'Contact | ' +
             config.twitterCard.title ||
             config.metadata.title ||
             config.siteTitle
@@ -204,4 +204,4 @@ const WebsiteMeta = () => {
   );
 };
 
-export default WebsiteMeta;
+export default ContactMeta;

@@ -47,7 +47,7 @@ const ArticlesHero = () => {
       </HeadingContainer> */}
       <HeadingContainer style={{ maxWidth: `600px` }}>
         <HeroHeading dangerouslySetInnerHTML={{ __html: title }} />
-        <HeroDescription>{description}</HeroDescription>
+        <HeroDescription dangerouslySetInnerHTML={{__html: description}}></HeroDescription>
       </HeadingContainer>
       <SubheadingContainer>
         {/* <Bio author={featuredAuthor} /> */}
