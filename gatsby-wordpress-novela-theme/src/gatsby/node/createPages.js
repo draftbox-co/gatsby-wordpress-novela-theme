@@ -83,6 +83,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
   let tags;
   let pages;
   let apiUrl;
+  let websiteTitle;
 
   const dataSources = {
     wordPress: { authors: [], articles: [], tags: [], pages: [] },
@@ -121,6 +122,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
     );
 
     apiUrl = siteMetaDataInfo.data.site.siteMetadata.apiUrl;
+    websiteTitle = siteMetaDataInfo.data.site.siteMetadata.siteTitle;
   } catch (error) {
     console.log(error);
   }
@@ -196,6 +198,7 @@ module.exports = async ({ actions: { createPage }, graphql }, themeOptions) => {
       context: {
         slug: article.slug,
         amp: true,
+        title: websiteTitle
       },
     });
   });

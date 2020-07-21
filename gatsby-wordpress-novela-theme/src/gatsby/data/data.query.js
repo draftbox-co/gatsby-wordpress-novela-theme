@@ -153,6 +153,7 @@ module.exports.wordpress = {
     site {
       siteMetadata {
         apiUrl
+        siteTitle
       }
     }
   }`,
