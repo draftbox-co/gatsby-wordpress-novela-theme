@@ -9,7 +9,10 @@ const Disqus = (props) => {
   };
 
   return process.env.GATSBY_DISQUS_SHORTNAME ? (
-    <DiscussionEmbed {...disqusConfig} />
+    <DiscussionEmbed shortname={disqusConfig.shortname} config={{
+      title: disqusConfig.title,
+      identifier: disqusConfig.identifier
+    }} />
   ) : (
     <></>
   );

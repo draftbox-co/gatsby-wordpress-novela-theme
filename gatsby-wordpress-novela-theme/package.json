@@ -1,7 +1,7 @@
 {
   "name": "@draftbox-co/gatsby-wordpress-novela-theme",
   "description": "A Gatsby theme plugin for creating blogs from headless WordPress CMS.",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "index.js",
   "author": "Draftbox",
   "homepage": "https://github.com/draftbox-co/gatsby-wordpress-novela-theme",
@@ -88,6 +88,7 @@
     "prism-react-renderer": "^0.1.7",
     "react-facebook": "^8.1.4",
     "react-helmet": "^5.2.1",
+    "react-intersection-observer": "^8.26.2",
     "react-live": "^2.2.0",
     "react-medium-image-zoom": "^4.2.0",
     "react-outside-click-handler": "^1.2.4",

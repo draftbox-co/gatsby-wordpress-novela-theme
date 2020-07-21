@@ -27,6 +27,8 @@ import Disqus from "@components/disqus";
 import FbComments from "@components/fb-comments";
 import ArticleMeta from "@components/meta/article-meta";
 
+import { InView } from "react-intersection-observer";
+
 const icons = {
   linkedin: Icons.LinkedIn,
   twitter: Icons.Twitter,
@@ -46,7 +48,7 @@ const siteQuery = graphql`
       siteMetadata {
         title: siteTitle
       }
-    } 
+    }
   }
 `;
 
@@ -76,6 +78,14 @@ const Article: Template = ({ pageContext, location }) => {
   const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=${article.title}`;
 
   const mailShareUrl = `mailto:?subject=${article.title}&body=${href}`;
+
+  const [showComments, setshowComments] = useState(false);
+
+  const handleCommentsVisibility = (inView) => {
+    if (inView && !showComments) {
+      setshowComments(true);
+    }
+  };
 
   useEffect(() => {
     const calculateBodySize = throttle(() => {
@@ -176,7 +186,11 @@ const Article: Template = ({ pageContext, location }) => {
             </ShareButton>
           </ShareButtonsContainer>
         </SocialShareContainer>
-        {process.env.GATSBY_DISQUS_SHORTNAME && (
+        <InView
+          as="div"
+          onChange={(inView) => handleCommentsVisibility(inView)}
+        ></InView>
+        {process.env.GATSBY_DISQUS_SHORTNAME && showComments && (
           <>
             <HorizontalRule />
             <EmbedContainer>
@@ -184,7 +198,7 @@ const Article: Template = ({ pageContext, location }) => {
             </EmbedContainer>
           </>
         )}
-        {process.env.GATSBY_FB_APP_ID && (
+        {process.env.GATSBY_FB_APP_ID && showComments && (
           <>
             <HorizontalRule />
             <EmbedContainer>
