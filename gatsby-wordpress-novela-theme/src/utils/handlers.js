@@ -12,6 +12,14 @@ function figcaption(h, node) {
   return h(node, "html", toHtml(node, { space: "html" }));
 }
 
+function video(h, node) {
+  return h(node, "html", toHtml(node, { space: "html" }));
+}
+
+function audio(h, node) {
+  return h(node, "html", toHtml(node, { space: "html" }));
+}
+
 function ul(h, node) {
   if (
     node.properties &&
@@ -84,4 +92,4 @@ function figure(h, node) {
     );
   }
 }
-module.exports = { iframe, figcaption, figure };
+module.exports = { iframe, figcaption, ul, video, audio, figure };
