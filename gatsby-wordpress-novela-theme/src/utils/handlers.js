@@ -38,4 +38,50 @@ function ul(h, node) {
   }
 }
 
-module.exports = { iframe, figcaption, ul };
+function figure(h, node) {
+  let hasImageGallery = false;
+  let imageGallery = "";
+  visit(node, function(node) {
+    if (node.tagName && node.tagName === "svg") {
+      delete node.properties["xmlnsXLink"];
+    }
+    if (
+      node.properties &&
+      node.properties.className &&
+      node.properties.className.includes("blocks-gallery-grid")
+    ) {
+      hasImageGallery = true;
+      visit(node, function(node) {
+        if (node.tagName === "img") {
+          imageGallery +=
+            `<p>` +
+            h(node, "html", toHtml(node, { closeSelfClosing: true })).value +
+            "</p>";
+        }
+      });
+    }
+
+    if (node.tagName === "figcaption") {
+      imageGallery += h(node, "html", toHtml(node, { closeSelfClosing: true }))
+        .value;
+    }
+  });
+
+  if (hasImageGallery) {
+    return {
+      type: "html",
+      value: `${imageGallery}`,
+    };
+  } else {
+    return h(
+      node,
+      "html",
+      toHtml(node, {
+        space: "html",
+        closeSelfClosing: true,
+        allowDangerousHtml: true,
+      })
+    );
+  }
+}
+module.exports = { iframe, figcaption, figure };
