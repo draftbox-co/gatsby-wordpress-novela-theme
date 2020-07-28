@@ -23,6 +23,7 @@ import { toKebabCase } from "@utils";
 import Iframe from "@components/Iframe";
 import Video from "@components/Video";
 import Audio from "@components/Audio";
+import Figure from "@components/Figure";
 
 const components = {
   ...shortcodes,
@@ -49,6 +50,7 @@ const components = {
   iframe: Iframe,
   video: Video,
   audio: Audio,
+  figure: Figure,
 };
 
 interface MDXProps {

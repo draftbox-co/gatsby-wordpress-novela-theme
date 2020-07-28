@@ -186,6 +186,11 @@ If your blog is hosted on wordpress.com you will have to add few extra keys for 
 
 PRs are welcome! Consider contributing to this project if you are missing feature that is also useful for others.
 
+## Credits
+
+Theme Ported from [Novela](https://github.com/narative/gatsby-theme-novela)
+
+
 # Copyright & License
 
 Copyright (c) 2020 [Draftbox](https://draftbox.co) - Released under the [MIT license](LICENSE).
