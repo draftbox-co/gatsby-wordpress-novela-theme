@@ -9,10 +9,11 @@ import url from "url";
 import { useColorMode } from "theme-ui";
 
 const Logo: Icon = ({ fill = "white" }) => {
-
   const [colorMode] = useColorMode();
   const {
-    site: { siteMetadata: {logoUrl, alternateLogoUrl, siteTitle, siteUrl} },
+    site: {
+      siteMetadata: { logoUrl, alternateLogoUrl, siteTitle, siteUrl },
+    },
   } = useStaticQuery(graphql`
     {
       site {
@@ -51,6 +52,13 @@ const LogoContainer = styled.div`
   .logo {
     height: 32px;
   }
+
+  ${mediaqueries.phablet`
+    .logo {
+      height: auto;
+      width:70%
+    }
+`}
 
   .Logo__Mobile {
     display: none;
