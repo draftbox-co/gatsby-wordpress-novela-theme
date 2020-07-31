@@ -8,6 +8,7 @@ const Head = styled.thead`
   font-weight: 600;
   color: ${p => p.theme.colors.primary};
   font-family: ${p => p.theme.fonts.serif};
+  font-weight: var(--merriweather-font-semibold);
   transition: ${p => p.theme.colorModeTransition};
 `;
 

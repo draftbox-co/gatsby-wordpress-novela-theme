@@ -12,6 +12,7 @@ const commonStyles = (p) => css`
   font-weight: bold;
   color: ${p.theme.colors.primary};
   font-family: ${p.theme.fonts.serif};
+  font-weight: var(--merriweather-font-bold);
 `;
 
 const h1 = styled.h1`
