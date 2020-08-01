@@ -156,9 +156,9 @@ const HoritzontalRule = styled.div`
 `;
 
 const FooterText = styled.div`
-    width: 33%;
+    width: 25%;
 
-    ${mediaqueries.phablet`
+    ${mediaqueries.tablet`
       width: 100%;
       text-align: center;
     `}
@@ -187,11 +187,12 @@ const FooterGradient = styled.div`
 
 const SocialLinksContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  width: 33%;
+  width: 25%;
 
-  ${mediaqueries.phablet`
+  ${mediaqueries.tablet`
     width: 100%;
     justify-content: center;
   `}
@@ -199,29 +200,23 @@ const SocialLinksContainer = styled.div`
 
 const FooterLinksContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  width: 33%;
-
-  ${mediaqueries.phablet`
-  width: 100%;
-`}
+  width: 40%;
 
   ${mediaqueries.tablet`
+  width: 100%;
   margin: 40px auto;
 `}
 `;
 
 const FooterLink = styled.a`
   color: ${(p) => p.theme.colors.grey};
-  margin-right: 20px;
-
-  :last-child {
-    margin-right: 0;
-  }
+  margin: 10px 15px;
 
   :hover {
-    text-decoration: underline;
+    color: ${(p) => p.theme.colors.primary};
   }
 `;
 
