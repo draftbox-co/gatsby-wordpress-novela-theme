@@ -102,4 +102,62 @@ module.exports = {
   iconUrl: "favicon.png",
   coverUrl: "cover.jpg",
   alternateLogoUrl: "logo.png",
+  themeConfig: {
+    variables: [
+      { varName: "--accent-color", value: "#6166DC" },
+      { varName: "--accent-color-dark", value: "#E9DAAC" },
+      { varName: "--success-color", value: "#46B17B" },
+      { varName: "--success-color-dark", value: "#46B17B" },
+      {
+        varName: "--merriweather-font",
+        value: `Montserrat`,
+      },
+      {
+        varName: "--merriweather-font-bold",
+        value: `700`,
+      },
+      {
+        varName: "--system-font",
+        value: `system-ui`,
+      },
+      {
+        varName: "--system-font-normal",
+        value: `400`,
+      },
+      {
+        varName: "--system-font-semibold",
+        value: `600`,
+      },
+      {
+        varName: "--system-font-bold",
+        value: `700`,
+      },
+      {
+        varName: "--monospace-font",
+        value: `Source Code Pro`,
+      },
+      {
+        varName: "--monospace-font-normal",
+        value: `400`,
+      },
+    ],
+    fonts: [
+      {
+        family: "Merriweather",
+        variants: ["700"],
+        //subsets: ['latin']
+        //text: 'Hello'
+        fontDisplay: "swap",
+        strategy: "selfHosted", // 'base64' || 'cdn'
+      },
+      {
+        family: "Source Code Pro",
+        variants: ["400"],
+        //subsets: ['latin']
+        //text: 'Hello'
+        fontDisplay: "swap",
+        strategy: "selfHosted", // 'base64' || 'cdn'
+      },
+    ]
+  }
 };

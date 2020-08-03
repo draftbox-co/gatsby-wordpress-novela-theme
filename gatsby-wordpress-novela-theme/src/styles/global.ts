@@ -16,7 +16,7 @@ export const globalStyles = css`
 
   @font-face {
     font-family: var(--system-font);
-    font-weight: 400;
+    font-weight: var(--system-font-normal);
     font-style: normal;
   }
 
@@ -45,7 +45,7 @@ export const globalStyles = css`
     font-family: var(--system-font);
     font-size: 1.6rem;
     margin: 0;
-    font-weight: 400;
+    font-weight: var(--system-font-normal);
     height: 100%;
   }
 
@@ -77,7 +77,8 @@ export const globalStyles = css`
   textarea,
   select,
   button {
-    font-family: var(--system-font);
+    font-family: var(--monospace-font);
+    font-weight: var(--monospace-font-normal);
   }
 
   .underline {

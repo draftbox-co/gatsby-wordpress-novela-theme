@@ -109,7 +109,6 @@ const HeroHeading = styled(Headings.h1)`
   font-family: ${(p) => p.theme.fonts.serif};
   font-weight: var(--merriweather-font-bold);
   margin-bottom: 25px;
-  font-weight: bold;
   line-height: 1.32;
 
   ${mediaqueries.tablet`
@@ -150,7 +149,7 @@ const HeroSubtitle = styled.div<{ hasCoAUthors: boolean }>`
 
     strong {
       display: block;
-      font-weight: 500;
+      font-weight: var(--system-font-semibold);
       margin-bottom: 5px;
     }
   `}
