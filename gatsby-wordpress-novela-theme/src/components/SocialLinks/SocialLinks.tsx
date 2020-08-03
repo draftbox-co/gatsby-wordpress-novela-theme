@@ -32,6 +32,9 @@ const icons = {
   tripadvisor: Icons.TripAdvisor,
   buymeacoffee: Icons.Buymeacoffee,
   mailto: Icons.Mailto,
+  pinterest: Icons.Pinterest,
+  whatsapp: Icons.Whatsapp,
+  externalLink: Icons.ExternalLink,
 };
 
 const getHostname = (url) => {
@@ -89,6 +92,7 @@ const SocialIconContainer = styled.a`
 
   svg {
     height: 18px;
+    width: 18px;
   }
 
   &:hover {

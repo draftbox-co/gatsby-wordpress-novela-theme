@@ -20,6 +20,12 @@ const siteQuery = graphql`
           instagram
           linkedin
           github
+          dribbble
+          behance
+          youtube
+          pinterest
+          externalLink
+          whatsapp
         }
         footer {
           navigation {
