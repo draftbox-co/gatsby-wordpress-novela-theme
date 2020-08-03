@@ -64,6 +64,11 @@ export interface IArticle {
   tags: ITag[];
   excerpt: string;
   id: string;
+  featured_media_custom: {
+    localFile: {
+      publicURL: string;
+    };
+  };
   hero: {
     full: IGatsbyImageFluid;
     preview: IGatsbyImageFluid;

@@ -39,7 +39,11 @@ module.exports.wordpress = {
             }
             bio:description
           }
-          
+          featured_media_custom {
+            localFile {
+              publicURL
+            }
+          }
           hero: featured_media_custom {
             localFile {
               full: childImageSharp {
@@ -91,7 +95,11 @@ module.exports.wordpress = {
             }
             bio:description
           }
-          
+          featured_media_custom {
+            localFile {
+              publicURL
+            }
+          }
           hero: featured_media_custom {
             localFile {
               full: childImageSharp {

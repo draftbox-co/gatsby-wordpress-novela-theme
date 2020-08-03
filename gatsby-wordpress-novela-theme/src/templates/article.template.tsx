@@ -41,6 +41,8 @@ const FacebookIcon = Icons.Facebook;
 const TwitterIcon = Icons.Twitter;
 const MailToIcon = Icons.Mailto;
 const CopyIcon = Icons.Copy;
+const PinterestIcon = Icons.Pinterest;
+const WhatsappIcon = Icons.Whatsapp;
 
 const siteQuery = graphql`
   {
@@ -55,9 +57,12 @@ const siteQuery = graphql`
 const Article: Template = ({ pageContext, location }) => {
   const [href, sethref] = useState("");
 
+  const [origin, setOrigin] = useState("");
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       sethref(window.location.href);
+      setOrigin(window.location.origin);
     }
   }, []);
 
@@ -78,6 +83,17 @@ const Article: Template = ({ pageContext, location }) => {
   const linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${href}&title=${article.title}`;
 
   const mailShareUrl = `mailto:?subject=${article.title}&body=${href}`;
+
+  let pinterestShareUrl = `https://www.pinterest.com/pin/create/button/?url=${href}&description=${article.title}`;
+
+  if (article.featured_media_custom?.localFile?.publicURL) {
+    pinterestShareUrl += `&media=${origin +
+      article.featured_media_custom?.localFile?.publicURL}`;
+  }
+
+  const whatsAppShareUrl = `https://wa.me/?text=${encodeURIComponent(
+    article.title + "\n" + href
+  )}`;
 
   const [showComments, setshowComments] = useState(false);
 
@@ -172,6 +188,22 @@ const Article: Template = ({ pageContext, location }) => {
               aria-label="Linkedin Share"
             >
               <LinkedInIcon fill="#73737D" />
+            </ShareButton>
+            <ShareButton
+              href={pinterestShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Pinterest Share"
+            >
+              <PinterestIcon fill="#73737D" />
+            </ShareButton>
+            <ShareButton
+              href={whatsAppShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Pinterest Share"
+            >
+              <WhatsappIcon fill="#73737D" />
             </ShareButton>
             <ShareButton
               href={mailShareUrl}
