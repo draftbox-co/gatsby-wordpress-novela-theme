@@ -6,6 +6,7 @@ const Blockquote = styled.blockquote`
   margin: 15px auto 50px;
   color: ${p => p.theme.colors.articleText};
   font-family: ${p => p.theme.fonts.serif};
+  font-weight: var(--merriweather-font-bold);
   font-style: italic;
 
   ${mediaqueries.tablet`
@@ -21,7 +22,7 @@ const Blockquote = styled.blockquote`
     margin: 0 auto;
     font-size: 36px;
     line-height: 1.32;
-    font-weight: bold;
+    font-weight: var(--merriweather-font-bold);
 
     ${mediaqueries.tablet`
       font-size: 26px;

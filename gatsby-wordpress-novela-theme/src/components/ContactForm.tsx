@@ -11,7 +11,7 @@ const ContactForm = () => {
   const {
     site: {
       siteMetadata: { contactWidget, siteTitle },
-    }
+    },
   } = useStaticQuery(graphql`
     query {
       site {
@@ -59,63 +59,69 @@ const ContactForm = () => {
   };
 
   return (
-      <ContactFormSection narrow>
-        <Content>
-          <ContactContainer>
-            <Heading>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: contactWidget.title
-                    ? contactWidget.title
-                    : `Contact ` + siteTitle,
-                }}
-              ></span>
-            </Heading>
-            <Form onSubmit={(e) => handleSubmit(e)}>
-              <Label htmlFor="name">Your Name</Label>
-              <Input
-                name="name"
-                type="text"
-                id="name"
-                placeholder="Your name (optional)"
-                onChange={(e) => handleChange(e.target.id, e.target.value)}
-              />
-              <Label htmlFor="email">Your Name</Label>
-              <Input
-                name="email"
-                type="email"
-                id="email"
-                required
-                placeholder="Your email address"
-                onChange={(e) => handleChange(e.target.id, e.target.value)}
-              />
-              <Label htmlFor="message">Your Name</Label>
-              <Textarea
-                required
-                name="message"
-                placeholder="Your message"
-                onChange={(e) => handleChange(e.target.id, e.target.value)}
-                id="message"
-              />
-              <Button
-                type="submit"
-                hasError={error}
-                subscribed={succeeded}
-                disabled={succeeded}
-              >
-                {succeeded ? <CheckMarkIcon /> : "Send"}
-              </Button>
-              {succeeded && (
-                <SuccessText>
-                  {contactWidget.successMessage
-                    ? contactWidget.successMessage
-                    : `We'll get in touch with you soon.`}
-                </SuccessText>
+    <ContactFormSection narrow>
+      <Content>
+        <ContactContainer>
+          <Heading>
+            <span
+              dangerouslySetInnerHTML={{
+                __html: contactWidget.title
+                  ? contactWidget.title
+                  : `Contact ` + siteTitle,
+              }}
+            ></span>
+          </Heading>
+          <Form onSubmit={(e) => handleSubmit(e)}>
+            <Label htmlFor="name">Your Name</Label>
+            <Input
+              name="name"
+              type="text"
+              id="name"
+              placeholder="Your name (optional)"
+              onChange={(e) => handleChange(e.target.id, e.target.value)}
+            />
+            <Label htmlFor="email">Your Name</Label>
+            <Input
+              name="email"
+              type="email"
+              id="email"
+              required
+              placeholder="Your email address"
+              onChange={(e) => handleChange(e.target.id, e.target.value)}
+            />
+            <Label htmlFor="message">Your Name</Label>
+            <Textarea
+              required
+              name="message"
+              placeholder="Your message"
+              onChange={(e) => handleChange(e.target.id, e.target.value)}
+              id="message"
+            />
+            <Button
+              type="submit"
+              hasError={error}
+              subscribed={succeeded}
+              disabled={succeeded}
+            >
+              {succeeded ? (
+                <CheckMarkIcon />
+              ) : submitting ? (
+                "Sending..."
+              ) : (
+                "Send"
               )}
-            </Form>
-          </ContactContainer>
-        </Content>
-      </ContactFormSection>
+            </Button>
+            {succeeded && (
+              <SuccessText>
+                {contactWidget.successMessage
+                  ? contactWidget.successMessage
+                  : `We'll get in touch with you soon.`}
+              </SuccessText>
+            )}
+          </Form>
+        </ContactContainer>
+      </Content>
+    </ContactFormSection>
   );
 };
 
@@ -267,7 +273,7 @@ const Button = styled.button<{ hasError: string; subscribed: boolean }>`
     ${(p) => (p.hasError ? p.theme.colors.error : p.theme.colors.accent)};
   color: ${(p) => (p.hasError ? p.theme.colors.error : p.theme.colors.accent)};
   background: ${(p) => (p.subscribed ? p.theme.colors.accent : "transparent")};
-  font-weight: 600;
+  font-weight: var(--system-font-semibold);
   border-radius: 35px;
   letter-spacing: 0.42px;
   transition: border-color 0.2s var(--ease-in-out-quad),
