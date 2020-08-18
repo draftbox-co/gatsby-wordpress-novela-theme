@@ -296,6 +296,10 @@ const TagsContainer = styled.div`
   width: 100%;
   max-width: 680px;
   margin: 0 auto 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 
   ${mediaqueries.desktop`
     max-width: 507px;
@@ -317,6 +321,7 @@ const Tag = styled.a`
   border: 1px solid ${(p) => p.theme.colors.accent};
   color: ${(p) => p.theme.colors.accent};
   margin-right: 10px;
+  margin-bottom: 10px;
   font-size: 14px;
 
   &:hover {
